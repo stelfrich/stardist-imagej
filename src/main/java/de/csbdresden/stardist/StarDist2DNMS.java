@@ -27,7 +27,7 @@ import net.imglib2.RandomAccessibleInterval;
 import net.imglib2.type.numeric.real.FloatType;
 import net.imglib2.view.Views;
 
-@Plugin(type = Command.class, label = "StarDist 2D NMS", menu = {
+@Plugin(type = Command.class, label = "StarDist 2D NMS", headless = true, menu = {
         @Menu(label = MenuConstants.PLUGINS_LABEL, weight = MenuConstants.PLUGINS_WEIGHT, mnemonic = MenuConstants.PLUGINS_MNEMONIC),
         @Menu(label = "StarDist"),
         @Menu(label = "Other"),
@@ -44,7 +44,6 @@ public class StarDist2DNMS extends StarDist2DBase implements Command {
     @Parameter(label=Opt.LABEL_IMAGE, type=ItemIO.OUTPUT)
     private Dataset label;
 
-    @Parameter(type=ItemIO.OUTPUT)
     private Candidates polygons;
 
     @Parameter(label=Opt.PROB_THRESH, stepSize="0.05", min="0", max="1", style=NumberWidget.SLIDER_STYLE)
@@ -69,9 +68,6 @@ public class StarDist2DNMS extends StarDist2DBase implements Command {
 
     @Parameter(label=Opt.VERBOSE)
     private boolean verbose = (boolean) Opt.getDefault(Opt.VERBOSE);
-
-    @Parameter(label=Opt.RESTORE_DEFAULTS, callback="restoreDefaults")
-    private Button restoreDefaults;
 
     // ---------
 

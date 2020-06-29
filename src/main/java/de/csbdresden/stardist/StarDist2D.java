@@ -44,7 +44,7 @@ import net.imglib2.util.Pair;
 import net.imglib2.util.ValuePair;
 import net.imglib2.view.Views;
 
-@Plugin(type = Command.class, label = "StarDist 2D", menu = {
+@Plugin(type = Command.class, label = "StarDist 2D", headless = true, menu = {
         @Menu(label = MenuConstants.PLUGINS_LABEL, weight = MenuConstants.PLUGINS_WEIGHT, mnemonic = MenuConstants.PLUGINS_MNEMONIC),
         @Menu(label = "StarDist"),
         @Menu(label = "StarDist 2D", weight = 1)
@@ -140,12 +140,6 @@ public class StarDist2D extends StarDist2DBase implements Command {
     private boolean showProbAndDist = (boolean) Opt.getDefault(Opt.SHOW_PROB_DIST);
 
     // TODO: values for block multiple and overlap
-
-    @Parameter(label=Opt.SET_THRESHOLDS, callback="setThresholds")
-    private Button restoreThresholds;
-
-    @Parameter(label=Opt.RESTORE_DEFAULTS, callback="restoreDefaults")
-    private Button restoreDefaults;
 
     // ---------
 
