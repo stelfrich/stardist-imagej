@@ -140,8 +140,6 @@
 			<groupId>de.lighti</groupId>
 			<artifactId>Clipper</artifactId>
 			<version>6.4.2</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/Clipper-6.4.2.jar</systemPath>
 		</dependency>
 		<!-- CSBDeep -->
 		<dependency>
@@ -159,4 +157,31 @@
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 	</dependencies>
+	
+<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <includes>
+                  <include>de.lighti:Clipper</include>
+                  <include>com.google.code.gson:gson</include>
+                  <include>de.csbdresden:csbdeep</include>
+                </includes>
+              </artifactSet>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  
 </project>
